@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "zXNpoOb2cotRQKUJXc5KdedTqFEjqJCy9mwnZmSMEog=",
+  "Source": "CustomerInvoiceAPI",
+  "BasePath": "_content/CustomerInvoiceAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
