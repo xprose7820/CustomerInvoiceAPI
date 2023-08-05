@@ -37,13 +37,13 @@ namespace CustomerInvoiceAPI.Controllers
 
 						if (customerAddress != null)
 						{
-							_logger.LogInformation("Customer with ID: {Id} created successfully", customerAddress.Id);
+							_logger.LogInformation("Customer Address with ID: {Id} created successfully", customerAddress.Id);
 							return Ok(customerAddress);
 						}
 						else
 						{
-							_logger.LogError("Error occurred while creating customer.");
-							return BadRequest("An error occurred while trying to create the customer.");
+							_logger.LogError("Error occurred while creating Customer Address.");
+							return BadRequest("An error occurred while trying to create the Customer Address.");
 						}
 
 					}
@@ -120,8 +120,8 @@ namespace CustomerInvoiceAPI.Controllers
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error occurred while retrieving customers.");
-				return BadRequest("An error occurred while trying to retrieve the customers.");
+				_logger.LogError(ex, "Error occurred while retrieving Customer Address.");
+				return BadRequest("An error occurred while trying to retrieve the Customer Address.");
 
 			}
 		}
@@ -137,21 +137,21 @@ namespace CustomerInvoiceAPI.Controllers
 					{
 
 						await _customerAddressService.UpdateCustomerAddressAsync(customerAddressId, model);
-						_logger.LogInformation("Customer with ID: {Id} updated.", customerAddressExists.Id);
+						_logger.LogInformation("Customer Address with ID: {Id} updated.", customerAddressExists.Id);
 						return Ok(customerAddressExists);
 
 					}
 					else
 					{
-						_logger.LogWarning("Customer with ID: {Id} not found.", customerAddressId);
+						_logger.LogWarning("Customer Address with ID: {Id} not found.", customerAddressId);
 						return NotFound();
 					}
 
 				}
 				catch (Exception ex)
 				{
-					_logger.LogError(ex, "Error occurred while retrieving customer.");
-					return BadRequest("An error occurred while trying to retrieve the customer.");
+					_logger.LogError(ex, "Error occurred while retrieving Customer Address.");
+					return BadRequest("An error occurred while trying to retrieve the Customer Address.");
 				}
 			}
 			else
@@ -176,15 +176,15 @@ namespace CustomerInvoiceAPI.Controllers
 				}
 				else
 				{
-					_logger.LogWarning("Customer with ID: {Id} not found.", customerAddressId);
+					_logger.LogWarning("Customer Address with ID: {Id} not found.", customerAddressId);
 					return NotFound();
 
 				}
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error occurred while retrieving customers.");
-				return BadRequest("An error occurred while trying to retrieve the customers.");
+				_logger.LogError(ex, "Error occurred while retrieving Customer Address.");
+				return BadRequest("An error occurred while trying to retrieve the Customer Address.");
 
 			}
 		}

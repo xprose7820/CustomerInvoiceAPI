@@ -38,7 +38,7 @@ namespace CustomerInvoiceAPI.Services.Invoice
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error creating address.");
+				_logger.LogError(ex, "Error creating Invoices.");
 				throw;
 
 			}
@@ -48,7 +48,7 @@ namespace CustomerInvoiceAPI.Services.Invoice
 		{
 			if (invoiceId <= 0)
 			{
-				throw new ArgumentException("Invalid customerId. The customerId must be a positive integer.");
+				throw new ArgumentException("Invalid Invoices. The Invoices must be a positive integer.");
 			}
 			try
 			{
@@ -57,7 +57,7 @@ namespace CustomerInvoiceAPI.Services.Invoice
 				if (invoiceEntity == null)
 				{
 					// Log a warning to indicate that the customer was not found
-					_logger.LogWarning("Customer with ID: {Id} not found.", invoiceId);
+					_logger.LogWarning("Invoices with ID: {Id} not found.", invoiceId);
 				}
 
 				return invoiceEntity;
@@ -65,7 +65,7 @@ namespace CustomerInvoiceAPI.Services.Invoice
 			catch (Exception ex)
 			{
 				// Log the exception details and rethrow it to be handled at a higher level
-				_logger.LogError(ex, "Error occurred while retrieving customer with ID: {Id}.", invoiceId);
+				_logger.LogError(ex, "Error occurred while retrieving Invoices with ID: {Id}.", invoiceId);
 				throw;
 			}
 
@@ -88,7 +88,7 @@ namespace CustomerInvoiceAPI.Services.Invoice
 			catch (Exception ex)
 			{
 
-				_logger.LogError(ex, "An error occurred while retrieving customers.");
+				_logger.LogError(ex, "An error occurred while retrieving Invoices.");
 
 				// Optionally, you might choose to rethrow the exception,
 				// or you might return an empty list or null, depending on how you want your application to behave
@@ -115,7 +115,7 @@ namespace CustomerInvoiceAPI.Services.Invoice
 			catch (Exception ex)
 			{
 
-				_logger.LogError(ex, "An error occurred while retrieving customers.");
+				_logger.LogError(ex, "An error occurred while retrieving Invoices.");
 
 				// Optionally, you might choose to rethrow the exception,
 				// or you might return an empty list or null, depending on how you want your application to behave
@@ -139,7 +139,7 @@ namespace CustomerInvoiceAPI.Services.Invoice
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error occurred while retrieving customer with ID: {Id}.", invoiceId);
+				_logger.LogError(ex, "Error occurred while retrieving Invoices with ID: {Id}.", invoiceId);
 				throw;
 
 			}
@@ -148,7 +148,7 @@ namespace CustomerInvoiceAPI.Services.Invoice
 		{
 			if (invoiceId <= 0)
 			{
-				throw new ArgumentException("Invalid customerId. The customerId must be a positive integer.");
+				throw new ArgumentException("Invalid Invoices. The Invoices must be a positive integer.");
 			}
 
 			try
@@ -156,7 +156,7 @@ namespace CustomerInvoiceAPI.Services.Invoice
 				InvoiceEntity invoiceExists = await _context.Invoices.Where(g => g.Id == invoiceId).FirstOrDefaultAsync();
 				if (invoiceExists == null)
 				{
-					_logger.LogWarning("Customer with ID: {Id} not found.", invoiceId);
+					_logger.LogWarning("Invoices with ID: {Id} not found.", invoiceId);
 					return null;
 
 
@@ -171,7 +171,7 @@ namespace CustomerInvoiceAPI.Services.Invoice
 			catch (Exception ex)
 			{
 				// Log the exception details and rethrow it to be handled at a higher level
-				_logger.LogError(ex, "Error occurred while retrieving customer with ID: {Id}.", invoiceId);
+				_logger.LogError(ex, "Error occurred while retrieving Invoices with ID: {Id}.", invoiceId);
 				throw;
 
 			}

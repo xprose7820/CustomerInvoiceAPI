@@ -37,13 +37,13 @@ namespace CustomerInvoiceAPI.Controllers
 
 						if (invoice != null)
 						{
-							_logger.LogInformation("Customer with ID: {Id} created successfully", invoice.Id);
+							_logger.LogInformation("Invoice with ID: {Id} created successfully", invoice.Id);
 							return Ok(invoice);
 						}
 						else
 						{
-							_logger.LogError("Error occurred while creating customer.");
-							return BadRequest("An error occurred while trying to create the customer.");
+							_logger.LogError("Error occurred while creating Invoice.");
+							return BadRequest("An error occurred while trying to create the Invoice.");
 						}
 
 					}
@@ -58,14 +58,14 @@ namespace CustomerInvoiceAPI.Controllers
 				}
 				catch (Exception ex)
 				{
-					_logger.LogError(ex, "Error occurred while creating address.");
-					return BadRequest("An error occurred while trying to create the address.");
+					_logger.LogError(ex, "Error occurred while creating Invoice.");
+					return BadRequest("An error occurred while trying to create the Invoice.");
 
 				}
 			}
 			else
 			{
-				_logger.LogWarning("Invalid model state for the creation of a new address");
+				_logger.LogWarning("Invalid model state for the creation of a new Invoice");
 				return BadRequest(ModelState);
 			}
 
@@ -78,19 +78,19 @@ namespace CustomerInvoiceAPI.Controllers
 				InvoiceEntity invoiceExists = await _invoiceService.GetInvoiceAsync(invoiceId);
 				if (invoiceExists != null)
 				{
-					_logger.LogInformation("Customer Address with ID: {Id} found.", invoiceExists.Id);
+					_logger.LogInformation("Invoice with ID: {Id} found.", invoiceExists.Id);
 					return Ok(invoiceExists);
 				}
 				else
 				{
-					_logger.LogWarning("Customer with ID: {Id} not found.", invoiceExists);
+					_logger.LogWarning("Invoice with ID: {Id} not found.", invoiceExists);
 					return NotFound();
 				}
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error occurred while retrieving customer address.");
-				return BadRequest("An error occurred while trying to retrieve the customer address.");
+				_logger.LogError(ex, "Error occurred while retrieving Invoice.");
+				return BadRequest("An error occurred while trying to retrieve the Invoice.");
 			}
 		}
 		[HttpGet("list/all")]
@@ -110,8 +110,8 @@ namespace CustomerInvoiceAPI.Controllers
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error occurred while retrieving customers.");
-				return BadRequest("An error occurred while trying to retrieve the customers.");
+				_logger.LogError(ex, "Error occurred while retrieving Invoice.");
+				return BadRequest("An error occurred while trying to retrieve the Invoice.");
 			}
 		}
 		[HttpGet("list/{customerId}")]
@@ -160,21 +160,21 @@ namespace CustomerInvoiceAPI.Controllers
 					{
 
 						await _invoiceService.UpdateInvoiceAsync(invoiceId, model);
-						_logger.LogInformation("Customer with ID: {Id} updated.", invoiceExists.Id);
+						_logger.LogInformation("Invoice with ID: {Id} updated.", invoiceExists.Id);
 						return Ok(invoiceExists);
 
 					}
 					else
 					{
-						_logger.LogWarning("Customer with ID: {Id} not found.", invoiceExists);
+						_logger.LogWarning("Invoice with ID: {Id} not found.", invoiceExists);
 						return NotFound();
 					}
 
 				}
 				catch (Exception ex)
 				{
-					_logger.LogError(ex, "Error occurred while retrieving customer.");
-					return BadRequest("An error occurred while trying to retrieve the customer.");
+					_logger.LogError(ex, "Error occurred while retrieving Invoice.");
+					return BadRequest("An error occurred while trying to retrieve the Invoice.");
 				}
 			}
 			else
@@ -191,21 +191,21 @@ namespace CustomerInvoiceAPI.Controllers
 				InvoiceEntity invoiceExists = await _invoiceService.DeleteInvoiceAsync(invoiceId);
 				if (invoiceExists != null)
 				{
-					_logger.LogInformation("Customer with ID: {Id} deleted.", invoiceExists.Id);
+					_logger.LogInformation("Invoice with ID: {Id} deleted.", invoiceExists.Id);
 					return Ok(invoiceExists);
 
 				}
 				else
 				{
-					_logger.LogWarning("Customer with ID: {Id} not found.", invoiceId);
+					_logger.LogWarning("Invoice with ID: {Id} not found.", invoiceId);
 					return NotFound();
 				}
 
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error occurred while retrieving customer.");
-				return BadRequest("An error occurred while trying to retrieve the customer.");
+				_logger.LogError(ex, "Error occurred while retrieving Invoice.");
+				return BadRequest("An error occurred while trying to retrieve the Invoice.");
 			}
 		}
 	}
